@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #ede7f6;
+}
+/* header */
+
+/* header */
+/* cadadtro */
+.pag-cadastro{
+    height: 535px
+}
+h1{
+    margin: 0 auto;
+}
+.retangulo-esquerda{
+    float: left;
+}
+
+.retangulo-direita{
+    float: right;
+}
+.box-cadastro {
+    max-width: 80%;
+    padding-top: 45px;
+    margin: 0 auto;
+}
+.box-cadastro form{
+    display: inline-block;
+    background-color: white;
+    box-shadow: 3px 3px 5px 2px #ccc;
+    padding: 20px 20px 20px 20px;
+    border-radius: 20px;
+    width: 400px;
+    margin-bottom: 50px;
+}
+.box-cadastro form select{
+    width: 100%;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 5px;
+    display: inline-block;
+}
+.input-padrao{
+    width: 95%;
+    height: 30px;
+    border: 1px solid;
+    padding: 1px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+.imagem {
+    float: right;
+    width: 600px;
+    height: 355px;
+    border-radius: 20px;
+}
+/* cadastro */
+/* footer */
+
+/* footer */

@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #ede7f6;
+}
+
+.pag-login {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.caixa {
+    max-width: 85%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.box-login {
+    display: inline-block;
+    background-color: white;
+    box-shadow: 3px 3px 5px 2px #ccc;
+    padding: 40px 0px 40px 0px;
+    border-radius: 20px;
+    width: 400px;
+}
+
+.pag-login .input-padrao {
+    width: 50%;
+    height: 30px;
+    border: 1px solid;
+    padding: 1px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}

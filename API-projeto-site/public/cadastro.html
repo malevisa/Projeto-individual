@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/cadastro.css">
+    <link rel="stylesheet" href="CSS/header.css">
+    <link rel="stylesheet" href="CSS/footer.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- cabeçalho -->
+    <div class="header">
+        <img src="img/guitar.png" class="logo" alt="logo">
+        <nav>
+            <ul class="nav_links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="">Sobre</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- fim cabeçalho -->
+    <!-- Cadastro -->
+    <div class="pag-cadastro">
+        <img class="retangulo-esquerda" src="img/retangulo-esquerdo.png">
+        <img class="retangulo-direita" src="img/retangulo-direito.png">
+        <div class="box-cadastro">
+            <h1>Faça aqui seu cadastro!</h1>
+            <form id="form_cadastro" onsubmit="return cadastrar()">
+                Nome
+                <br>
+                <input type="text" name="nome" placeholder="Nome e Sobrenome" class="input-padrao">
+                <br>
+                <br>
+                Email
+                <br>
+                <input type="text" name="email" placeholder="Email" class="input-padrao">
+                <br>
+                <br>
+                Senha
+                <br>
+                <input type="password" name="senha" placeholder="Senha" class="input-padrao">
+                <br>
+                <br>
+                Instrumento
+                <br>
+                <select name="instrumento">
+                    <option value="">Selecione um instrumento</option>
+                    <option value="guitarra">Guitarra</option>
+                    <option value="violão">Violão</option>
+                    <option value="teclado">Teclado</option>
+                    <option value="ukulele">Ukulele</option>
+                    <option value="baixo">Contra-Baixo</option>
+                </select>
+                <br>
+                <br>
+                <button class="botão" type="submit">Cadastrar</button>
+            </form>
+            <img class="imagem" src="img/print-dashboard.png" alt="">
+        </div>
+    </div>
+    <!-- Cadastro -->
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="sec aboutus">
+                <h2>About Us</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Fugit, accusamus unde quia aut ratione aspernatur pariatur 
+                    adipisci sequi nihil debitis libero hic ut assumenda! Perspiciatis 
+                    excepturi accusamus omnis? Quo, corrupti?</p>
+                <ul class="sci">
+                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></i></a></li>
+                    <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            <div class="sec quickLinks">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="">Sobre</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                </ul>
+            </div>
+            <div class="sec contact">
+                <h2>Contact Info</h2>
+                <ul class="info">
+                    <li>
+                        <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                        <span>Rua dos Loucos, 0</span>
+                    </li>
+                    <li>
+                        <span><i class="fa fa-phone-square" aria-hidden="true"></i></span>
+                        <p><a href="tel:123456789">+1 234 567 8900</a><br>
+                            <a href="tel:123456789">+1 234 567 8900</a></p>
+                    </li>
+                    <li>
+                        <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                        <p><a href="mailto:matheuslvs2003@gmail.com">matheuslvs2003@gmail.com</a></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="copyrightText">
+        <p>Muito orgulho do meu projeto individual</p>
+    </div>
+    <!-- Footer -->
+</body>
+</html>
+<script>
+
+    function cadastrar() {
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+            
+            if (response.ok) {
+  
+                window.location.href='login.html';
+  
+            } else {
+  
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                    div_erro.innerHTML = resposta;
+                });
+                finalizar_aguardar();
+            }
+        });
+  
+        return false;
+    }
+  
+    function aguardar() {
+        // btn_entrar.disabled = true;
+        // img_aguarde.style.display='block';
+        // div_erro.style.display='none';
+    }
+  
+    function finalizar_aguardar() {
+        // btn_entrar.disabled = false;
+        // img_aguarde.style.display='none';
+        // div_erro.style.display='block';
+    }
+  
+  </script>

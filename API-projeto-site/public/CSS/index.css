@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #ede7f6;
+}
+/* imagem de fundo */
+.time {
+    background-image: url(../img/imagem-fundo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 475px;
+}
+.time .container {
+    max-width: 80%;
+    text-align: center;
+    margin: 0;
+}
+.time .container h2 {
+    padding-top: 145px;
+    color: #EE7B3B;
+    font-size: 50px;
+    margin: 0;
+    padding-left: 271px;
+}
+.time .container p {
+    padding-top: 20px;
+    color: white;
+    font-size: 20px;
+    margin: 0;
+    padding-left: 271px;
+}
+/* imagem de fundo */
+/* chamativo do site */
+.titulo{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    background-color: #24252A;
+    color: #999;
+}
+.retangulo-esquerda{
+    float: left;
+    height: 700px;
+}
+
+.retangulo-direita{
+    float: right;
+    height: 700px;
+}
+.caixa-icone{
+    margin: 0 auto;
+    height: 233px;
+    max-width: 75%;
+}
+.icone{
+    width: 150px;
+}
+.topico1{
+    float: left;
+    font-size: 35px;
+}
+.topico1 p{
+    margin: 10px 0 10px 20px;
+}
+.topico2{
+    float: right;
+    font-size: 35px;
+}
+.topico2 p{
+    margin: 10px 0 10px 20px;
+}
+.subtitulo1{
+    float: right;
+    margin-top: 95px;
+    font-size: 20px;
+}
+.subtitulo2{
+    float: left;
+    margin-top: 95px;
+    font-size: 20px;
+}
+/* chamativo do site */
