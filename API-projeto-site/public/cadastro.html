@@ -16,7 +16,7 @@
         <nav>
             <ul class="nav_links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="">Sobre</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="cadastro.html">Cadastro</a></li>
                 <li><a href="login.html">Login</a></li>
             </ul>
@@ -30,19 +30,19 @@
         <div class="box-cadastro">
             <h1>Faça aqui seu cadastro!</h1>
             <form id="form_cadastro" onsubmit="return cadastrar()">
-                Nome
+                Nome e sobrenome
                 <br>
-                <input type="text" name="nome" placeholder="Nome e Sobrenome" class="input-padrao">
+                <input type="text" autocomplete="off" name="usuario" id="idNome" placeholder="Nome e Sobrenome" class="input-padrao" onkeyup="ipt_nome()">
                 <br>
                 <br>
                 Email
                 <br>
-                <input type="text" name="email" placeholder="Email" class="input-padrao">
+                <input type="text" autocomplete="off" id="idEmail" name="email" placeholder="Email" class="input-padrao" onkeyup="ipt_email()">
                 <br>
                 <br>
                 Senha
                 <br>
-                <input type="password" name="senha" placeholder="Senha" class="input-padrao">
+                <input type="password" autocomplete="off" id="idSenha" name="senha" placeholder="Senha" class="input-padrao" onkeyup="ipt_senha()">
                 <br>
                 <br>
                 Instrumento
@@ -57,6 +57,7 @@
                 </select>
                 <br>
                 <br>
+                <div id="div_msg"></div>
                 <button class="botão" type="submit">Cadastrar</button>
             </form>
             <img class="imagem" src="img/print-dashboard.png" alt="">
@@ -117,7 +118,6 @@
 <script>
 
     function cadastrar() {
-        aguardar();
         var formulario = new URLSearchParams(new FormData(form_cadastro));
         fetch("/usuarios/cadastrar", {
             method: "POST",
@@ -134,23 +134,40 @@
                 response.text().then(function (resposta) {
                     div_erro.innerHTML = resposta;
                 });
-                finalizar_aguardar();
             }
         });
   
         return false;
     }
-  
-    function aguardar() {
-        // btn_entrar.disabled = true;
-        // img_aguarde.style.display='block';
-        // div_erro.style.display='none';
+
+    function ipt_nome(){
+        idNome.style.borderColor = '#00959C'
     }
-  
-    function finalizar_aguardar() {
-        // btn_entrar.disabled = false;
-        // img_aguarde.style.display='none';
-        // div_erro.style.display='block';
+
+    function ipt_email(){
+        var nome_email = idEmail.value;
+
+        if(nome_email.indexOf('@') && nome_email.indexOf('.') > -1){
+            div_msg.innerHTML = '';
+            idEmail.style.borderColor = '#00959C'
+            
+        } else {
+            div_msg.innerHTML = '<span style="color: red; font-size: 15px;">Email incorreto!</span>';
+            idEmail.style.borderColor = 'red';
+        }
+    }
+
+    function ipt_senha(){
+        var senhas = idSenha.value;
+
+        if(senhas.length > 8){
+            div_msg.innerHTML = '';
+            idSenha.style.borderColor = '#00959C';
+            
+        } else {
+            div_msg.innerHTML = '<span style="color: red; font-size: 15px;">Minimo de 8 caracteres</span>';
+            idSenha.style.borderColor = 'red';
+        }
     }
   
   </script>

@@ -7,7 +7,41 @@ body {
 
 .pag-login {
     text-align: center;
-    padding: 50px 0;
+}
+
+.forma-esquerda{
+    background-color: rgba(238, 123, 59, 1);
+    width: 350px;
+    height: 370px;
+    float: left;
+    border-bottom-right-radius: 100px;
+    border-top-right-radius: 275px;
+}
+
+.forma-direita{
+    background-color: rgba(238, 123, 59, 1);
+    width: 350px;
+    height: 370px;
+    float: right;
+    border-bottom-left-radius: 100px;
+    border-top-left-radius: 275px;
+}
+
+.forma-dentro1{
+    background-color: rgba(238, 123, 59, 0.5);
+    width: 400px;
+    height: 370px;
+    border-bottom-right-radius: 100px;
+    border-top-right-radius: 275px;
+    float: left;
+}
+.forma-dentro2{
+    background-color: rgba(238, 123, 59, 0.5);
+    width: 400px;
+    height: 370px;
+    border-bottom-left-radius: 100px;
+    border-top-left-radius: 275px;
+    float: right;
 }
 
 .caixa {
@@ -23,6 +57,7 @@ body {
     padding: 40px 0px 40px 0px;
     border-radius: 20px;
     width: 400px;
+    margin: 50px;
 }
 
 .pag-login .input-padrao {

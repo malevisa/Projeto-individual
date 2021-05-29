@@ -16,7 +16,7 @@
         <nav>
             <ul class="nav_links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="">Sobre</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="cadastro.html">Cadastro</a></li>
                 <li><a href="login.html">Login</a></li>
             </ul>
@@ -25,17 +25,19 @@
     <!-- fim cabeçalho -->
     <!-- conteudo -->
     <div class="pag-login">
+        <div class="forma-dentro1"><div class="forma-esquerda"></div></div>
+        <div class="forma-dentro2"><div class="forma-direita"></div></div>
         <div class="caixa">
             <div class="box-login">
                 <h1>Login</h1>
                 <br>
                 <form id="form_login" method="post" onsubmit="return entrar()">
-                    <input type="text" placeholder="Usuario:" name="nome" class="input-padrao">
+                    <input type="text" autocomplete="off" placeholder="Usuario:" name="login" class="input-padrao">
                     <br><br>
-                    <input type="text" placeholder="Senha:" name="senha" class="input-padrao">
+                    <input type="password" autocomplete="off" placeholder="Senha:" name="senha" class="input-padrao">
                     <br>
                     <br>
-                    <button class="botão">Entrar</button>
+                    <button class="botão" type="submit">Entrar</button>
                 </form>
                 <div id="div_erro" class="msg_erro">
                 </div>
@@ -97,7 +99,6 @@
 <script>
 
     function entrar() {
-        aguardar();
         var formulario = new URLSearchParams(new FormData(form_login));
         fetch("/usuarios/autenticar", {
             method: "POST",
@@ -108,8 +109,9 @@
 
                 resposta.json().then(json => {
 
-                    sessionStorage.login_usuario_meuapp = json.login;
-                    sessionStorage.nome_usuario_meuapp = json.nome;
+                    // sessionStorage.login_usuario_meuapp = json.login;
+                    sessionStorage.nome_usuario_meuapp = json.usuario;
+                    sessionStorage.idUsuario_usuario_meuapp = json.idUsuario;
 
                     window.location.href = 'sistema.html';
                 });
@@ -118,27 +120,14 @@
 
                 console.log('Erro de login!');
 
+                alert('Seu Login ou senha estão errados');
+
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizar_aguardar(texto);
                 });
             }
         });
 
         return false;
     }
-
-    function aguardar() {
-        // btn_entrar.disabled = true;
-        // img_aguarde.style.visibility = 'visible';
-        // div_erro.style.visibility = 'hidden';
-    }
-
-    function finalizar_aguardar(resposta) {
-        // btn_entrar.disabled = false;
-        // img_aguarde.style.visibility = 'hidden';
-        // div_erro.style.visibility = 'visible';
-        // div_erro.innerHTML = resposta;
-    }
-
 </script>

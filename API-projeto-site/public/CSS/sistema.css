@@ -27,6 +27,7 @@ h1{
 .box-musicas img{
     float: right;
     width: 350px;
+    margin: -40px;
 }
 .input-padrao{
     width: 95%;
@@ -35,4 +36,52 @@ h1{
     padding: 1px 10px;
     border-radius: 5px;
     display: inline-block;
+}
+.box-crud {
+  height: auto;
+  margin: 75px;
+  border-radius: 5px;
+}
+
+.content-table{
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px 2px #ccc;
+    background-color: #fff;
+    margin-top: 45px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    height: auto;
+}
+  
+tbody tr:nth-child(odd) {
+    background-color: #c4c4c477;
+}
+ 
+tbody tr:nth-child(even) {
+    background-color: rgb(255, 255, 255);
+}
+
+table {
+    width: 100%;
+}
+
+thead tr {
+    background-color: #EE7B3B;
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+  
+th, td {
+    padding: 5px;
+}
+
+.coluna{
+    width: 238px;
+    height: 19px;
+    padding: 5px;
+}
+  
+th {
+    font-weight: bold;
 }

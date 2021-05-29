@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.min.js" 
+    integrity="sha512-yadYcDSJyQExcKhjKSQOkBKy2BLDoW6WnnGXCAkCoRlpHGpYuVuBqGObf3g/TdB86sSbss1AOP4YlGSb6EKQPg==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="CSS/sistema.css">
     <link rel="stylesheet" href="CSS/header.css">
     <link rel="stylesheet" href="CSS/footer.css">
     <script type="text/javascript" src="funcoes.js"></script>
     <title>Document</title>
 </head>
-<body>
+<body onload="obterPublicacoes()">
     <!-- cabeçalho -->
     <div class="header">
         <img src="img/guitar.png" class="logo" alt="logo">
@@ -18,7 +22,7 @@
             <ul class="nav_links">
                 <li><a href="#" onclick="logoff()">Sair</a></li>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="">Sobre</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="cadastro.html">Cadastro</a></li>
                 <li><a href="login.html">Login</a></li>
             </ul>
@@ -30,24 +34,46 @@
         <div class="caixa">
             <div class="box-musicas">
                 <h1>Cadastrar Músicas</h1>
-                <form>
+                <form id="form_publicar" method="post" onsubmit="return publicar()">
                     Nome da música
                     <br>
-                    <input type="text" class="input-padrao">
+                    <input type="text" name="musica" class="input-padrao" placeholder="Nome da Música" autocomplete="off">
                     <br><br>
                     Artista
                     <br>
-                    <input type="text" class="input-padrao">
+                    <input type="text" name="artista" class="input-padrao" placeholder="Artista" autocomplete="off">
                     <br><br>
                     Genero
                     <br>
-                    <input type="text" class="input-padrao">
+                    <input type="text" name="genero" class="input-padrao" placeholder="Genero" autocomplete="off">
                     <br><br>
-                    <button class="botão">Cadastrar</button>
+                    <button class="botão" type="submit">Cadastrar</button>
                 </form>
                 <img src="img/guitarrista.png">
             </div>
             <div class="repertorio"></div>
+        </div>
+    </div>
+
+    <div >
+    </div>
+
+
+    <div class="tabela">
+        <div class="box-crud">
+            <div class="content-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome da Música</th>
+                            <th>Artista</th>
+                            <th>Gênero</th>
+                        </tr>
+                    </thead>
+                    <tbody id="feed_container">
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <!-- conteudo -->
@@ -102,3 +128,95 @@
     <!-- Footer -->
 </body>
 </html>
+<script>
+
+    function publicar() {
+        console.log("entrei!")
+        var formulario = new URLSearchParams(new FormData(form_publicar));
+        var idUsuario = sessionStorage.getItem(idUsuario_usuario_meuapp);
+        fetch(`/musicas/publicar/${idUsuario}`, {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+
+            if (resposta.ok) {
+                obterPublicacoes()
+
+            } else {
+                console.log('Erro ao publicar!');
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+
+    function atualizarFeed(musicas) {
+        var feed = document.getElementById("feed_container");
+        feed.innerHTML = "";
+        for (let i = 0; i < musicas.length; i++) {
+            var musica = musicas[i];
+
+            var tdMusicas= document.createElement("tr")
+            var tdMusica = document.createElement("td")
+            var tdArtista = document.createElement("td")
+            var tdGenero = document.createElement("td")
+
+            tdMusica.innerHTML = `${musica.musica}`;
+            tdArtista.innerHTML = `${musica.artista}`;
+            tdGenero.innerHTML = `${musica.genero}`;
+
+            tdMusica.className = "coluna"
+            tdArtista.className = "coluna";
+            tdGenero.className = "coluna";
+
+            tdMusicas.appendChild(tdMusica);
+            tdMusicas.appendChild(tdArtista);
+            tdMusicas.appendChild(tdGenero);
+
+            feed.appendChild(tdMusicas);
+        }
+    }
+
+    function obterPublicacoes() {
+        fetch("/musicas")
+        .then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                   
+                    atualizarFeed(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção das publicações: ${error.message}`);
+        });
+    }
+
+    function obterPublicacoesPorUsuario(idUsuario) {
+        fetch(`/musicas/${idUsuario}`)
+        .then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    // alert(JSON.stringify(resposta))
+
+                    atualizarFeed(resposta);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
+        });
+    }
+
+</script>
