@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #ede7f6;
+}
+
+/* .pag-sobre{
+    height: 100%;
+    width: 100%;
+} */
+
+.caixa{
+    max-width: 85%;
+    margin: auto;
+}
+
+.texto{
+    float: left;
+}
+
+.imagem{
+    float: right;
+}
+
+.imagem img{
+    width: 400px;
+}
