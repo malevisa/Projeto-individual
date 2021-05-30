@@ -47,11 +47,10 @@
                     <br>
                     <input type="text" name="genero" class="input-padrao" placeholder="Genero" autocomplete="off">
                     <br><br>
-                    <button class="botão" type="submit">Cadastrar</button>
+                    <button class="botão" id="btn_publicar">Cadastrar Musicas</button>
                 </form>
                 <img src="img/guitarrista.png">
             </div>
-            <div class="repertorio"></div>
         </div>
     </div>
 
@@ -136,7 +135,7 @@
     function publicar() {
         console.log("entrei!")
         var formulario = new URLSearchParams(new FormData(form_publicar));
-        var idUsuario = sessionStorage.getItem(idUsuario_usuario_meuapp);
+        var idUsuario = sessionStorage.id_usuario_meuapp;
         fetch(`/musicas/publicar/${idUsuario}`, {
             method: "POST",
             body: formulario

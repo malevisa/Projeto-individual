@@ -37,7 +37,7 @@
                     <input type="password" autocomplete="off" placeholder="Senha:" name="senha" class="input-padrao">
                     <br>
                     <br>
-                    <button class="botão" type="submit">Entrar</button>
+                    <button id="btn_entrar" class="botão" type="submit">Entrar</button>
                 </form>
                 <div id="div_erro" class="msg_erro">
                 </div>
@@ -109,9 +109,9 @@
 
                 resposta.json().then(json => {
 
-                    // sessionStorage.login_usuario_meuapp = json.login;
-                    sessionStorage.nome_usuario_meuapp = json.usuario;
-                    sessionStorage.idUsuario_usuario_meuapp = json.idUsuario;
+                    sessionStorage.login_usuario_meuapp = json.usuario;
+                    sessionStorage.usuario_meuapp = json.usuario;
+                    sessionStorage.id_usuario_meuapp = json.idUsuario;
 
                     window.location.href = 'sistema.html';
                 });

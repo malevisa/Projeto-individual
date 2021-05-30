@@ -50,13 +50,13 @@ h1{
     border-radius: 5px;
     display: inline-block;
 }
-.imagem {
+
+.imagem{
     float: right;
+    border: 5px solid black;
+}
+
+.imagem img{
     width: 600px;
     height: 355px;
-    border-radius: 20px;
 }
-/* cadastro */
-/* footer */
-
-/* footer */

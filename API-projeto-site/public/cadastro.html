@@ -29,7 +29,7 @@
         <img class="retangulo-direita" src="img/retangulo-direito.png">
         <div class="box-cadastro">
             <h1>Faça aqui seu cadastro!</h1>
-            <form id="form_cadastro" onsubmit="return cadastrar()">
+            <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
                 Nome e sobrenome
                 <br>
                 <input type="text" autocomplete="off" name="usuario" id="idNome" placeholder="Nome e Sobrenome" class="input-padrao" onkeyup="ipt_nome()">
@@ -57,10 +57,11 @@
                 </select>
                 <br>
                 <br>
-                <div id="div_msg"></div>
-                <button class="botão" type="submit">Cadastrar</button>
+                <button id="btn_entrar" class="botão" type="submit">Cadastrar</button>
             </form>
-            <img class="imagem" src="img/print-dashboard.png" alt="">
+            <div class="imagem">
+                <img src="img/print-dashboard.png" alt="">
+            </div>
         </div>
     </div>
     <!-- Cadastro -->
@@ -132,7 +133,7 @@
   
                 console.log('Erro de cadastro!');
                 response.text().then(function (resposta) {
-                    div_erro.innerHTML = resposta;
+                    alert('Erro de cadastro')
                 });
             }
         });

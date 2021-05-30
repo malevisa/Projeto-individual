@@ -1,20 +1,20 @@
 let login_usuario;
-let nome_usuario;
-let idUsuario;
+let usuario;
+// let idUsuario;
 
 function redirecionar_login() {
     window.location.href = 'index.html';
 }
 
 function verificar_autenticacao() {
-    // login_usuario = sessionStorage.login_usuario_meuapp;
-    nome_usuario = sessionStorage.nome_usuario_meuapp;
+    login_usuario = sessionStorage.login_usuario_meuapp;
+    usuario = sessionStorage.usuario_meuapp;
     idUsuario = sessionStorage.idUsuario_meuapp;
     
     if (login_usuario == undefined)  {
         redirecionar_login();
     } else {
-        b_usuario.innerHTML = nome_usuario;
+        b_usuario.innerHTML = usuario;
         validar_sessao();
     }
     

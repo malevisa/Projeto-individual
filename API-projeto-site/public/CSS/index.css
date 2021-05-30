@@ -73,11 +73,11 @@ body {
 .subtitulo1{
     float: right;
     margin-top: 95px;
-    font-size: 20px;
+    /* font-size: 20px; */
 }
 .subtitulo2{
     float: left;
     margin-top: 95px;
-    font-size: 20px;
+    /* font-size: 20px; */
 }
 /* chamativo do site */

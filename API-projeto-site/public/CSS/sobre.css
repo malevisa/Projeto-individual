@@ -5,24 +5,51 @@ body {
     background: #ede7f6;
 }
 
-/* .pag-sobre{
+.pag-sobre{
     height: 100%;
     width: 100%;
-} */
+    margin: 30px 0;
+}
 
 .caixa{
-    max-width: 85%;
-    margin: auto;
+    max-width: 80%;
+    margin: 0 auto;
 }
 
 .texto{
     float: left;
+    width: 520px;
+    font-size: 20px;
+}
+
+.imagem-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(238, 123, 59, 0.5);
+    float: right;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    height: 550px;
+    width: 450px;
 }
 
 .imagem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     float: right;
+    background-color: #EE7B3B;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    width: 400px;
+    height: 500px;
 }
 
 .imagem img{
-    width: 400px;
+    width: 350px;
 }
