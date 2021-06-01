@@ -37,15 +37,15 @@
                 <form id="form_publicar" method="post" onsubmit="return publicar()">
                     Nome da música
                     <br>
-                    <input type="text" name="musica" class="input-padrao" placeholder="Nome da Música" autocomplete="off">
+                    <input id="idMusica" type="text" name="musica" class="input-padrao" placeholder="Nome da Música" autocomplete="off">
                     <br><br>
                     Artista
                     <br>
-                    <input type="text" name="artista" class="input-padrao" placeholder="Artista" autocomplete="off">
+                    <input id="idArtista" type="text" name="artista" class="input-padrao" placeholder="Artista" autocomplete="off">
                     <br><br>
                     Genero
                     <br>
-                    <input type="text" name="genero" class="input-padrao" placeholder="Genero" autocomplete="off">
+                    <input id="idGenero" type="text" name="genero" class="input-padrao" placeholder="Genero" autocomplete="off">
                     <br><br>
                     <button class="botão" id="btn_publicar">Cadastrar Musicas</button>
                 </form>
@@ -84,10 +84,9 @@
         <div class="container">
             <div class="sec aboutus">
                 <h2>About Us</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Fugit, accusamus unde quia aut ratione aspernatur pariatur 
-                    adipisci sequi nihil debitis libero hic ut assumenda! Perspiciatis 
-                    excepturi accusamus omnis? Quo, corrupti?</p>
+                <p>MusicalControl é um sistema que foi criado para facilitar a vida do músico.
+                    Permitindo que o usuário cadastre as músicas aprendidas e confira elas todas as vezes
+                    que entrar no sistema.</p>
                 <ul class="sci">
                     <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                     <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
@@ -137,12 +136,18 @@
         var formulario = new URLSearchParams(new FormData(form_publicar));
         var idUsuario = sessionStorage.id_usuario_meuapp;
         fetch(`/musicas/publicar/${idUsuario}`, {
+
             method: "POST",
             body: formulario
         }).then(resposta => {
 
             if (resposta.ok) {
+
                 obterPublicacoes()
+
+                idMusica.value = '';
+                idArtista.value = '';
+                idGenero.value = '';
 
             } else {
                 console.log('Erro ao publicar!');

@@ -27,12 +27,7 @@ module.exports = (sequelize, DataTypes) => {
 			field: 'genero',
 			type: DataTypes.STRING,
 			allowNull: false
-		},
-		fkUsuario: {
-            field: 'fkUsuario',
-            type: DataTypes.INTEGER,
-            allowNull: false
-        }
+		}
 	}, 
 	{
 		tableName: 'musicas', 

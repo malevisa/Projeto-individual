@@ -13,8 +13,7 @@ router.post('/publicar/:idUsuario', function(req, res, next) {
     Musica.create({
         musica: req.body.musica,
 		artista: req.body.artista,
-		genero: req.body.genero,
-		fkusuario: idUsuario
+		genero: req.body.genero
     }).then(resultado => {
         console.log("Post realizado com sucesso!!");
         res.send(resultado);

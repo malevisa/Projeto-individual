@@ -1,6 +1,6 @@
 let login_usuario;
 let usuario;
-// let idUsuario;
+let idUsuario;
 
 function redirecionar_login() {
     window.location.href = 'index.html';
@@ -9,7 +9,7 @@ function redirecionar_login() {
 function verificar_autenticacao() {
     login_usuario = sessionStorage.login_usuario_meuapp;
     usuario = sessionStorage.usuario_meuapp;
-    idUsuario = sessionStorage.idUsuario_meuapp;
+    idUsuario = sessionStorage.id_usuario_meuapp;
     
     if (login_usuario == undefined)  {
         redirecionar_login();
